@@ -34,4 +34,4 @@ jobs:
             
             - name: Terraform State File Output
               if: always()
-              run: cat > *.tfstate
+              run: cat < *.tfstate
