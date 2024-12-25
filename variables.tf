@@ -1,7 +1,3 @@
-variable "subscription_id" {}
-variable "client_id" {}
-variable "client_secret" {}
-variable "tenant_id" {}
 variable "location" {}
 variable "resource_group_name" {}
 variable "key_vault_name" {}
@@ -12,3 +8,8 @@ variable "data_disk_name" {}
 variable "data_disk_size_gb" {}
 variable "data_disk_storage_type" {}
 variable "data_disk_creation_option" {}
+
+variable "subscription_id" {}
+variable "client_id" {}
+variable "client_secret" {}
+variable "tenant_id" {}
