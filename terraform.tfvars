@@ -1,6 +1,6 @@
 location = "East US"
 resource_group_name = "rgp"
-key_vault_name = "keyvault400400"
+key_vault_name = "keyvault500500"
 key_vault_sku_name = "standard"
 key_vault_key_name = "encryptkey"
 disk_encryption_set_name = "diskencryptionset200200"
