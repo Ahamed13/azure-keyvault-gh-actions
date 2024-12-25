@@ -1,0 +1,24 @@
+name: Terraform-Workflow
+on: workflow_dispatch
+env:
+    TF_VAR_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    TF_VAR_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+    TF_VAR_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+    TF_VAR_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+jobs:
+    terraform:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            
+            - name: Setup Terraform
+              uses: hashicorp/setup-terraform@v3
+              with:
+                  terraform_version: 1.10.3
+            
+            - name: Initializing Terraform
+              run: terraform init
+
+            - name: Terraform Plan
+              run: terraform plan -out=tfplan
