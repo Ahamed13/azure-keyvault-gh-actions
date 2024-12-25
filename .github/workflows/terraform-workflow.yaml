@@ -1,7 +1,7 @@
 name: Terraform-Workflow
 on: workflow_dispatch
 jobs:
-    terraform:
+    Terraform-Apply-Job:
         runs-on: ubuntu-latest
         env:
           TF_VAR_subscription_id: ${{ secrets.TF_VAR_SUBSCRIPTION_ID }}
@@ -25,4 +25,12 @@ jobs:
               run: terraform plan -out=tfplan
             
             - name: Terraform Apply
+              id: terraform-apply
               run: terraform apply -auto-approve tfplan
+            
+            - name: Terraform Destroy
+              if: failure() && steps.terraform-apply.outcome == 'failure'
+              run: terraform destroy -auto-approve
+            
+            - name: Terraform State File Output
+              run: cat > *.tfstate
